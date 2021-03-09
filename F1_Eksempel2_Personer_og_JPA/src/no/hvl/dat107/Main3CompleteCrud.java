@@ -27,13 +27,11 @@ public class Main3CompleteCrud {
 		Person per = crud.retrievePerson(1001);
 		System.out.println(per);
 		
-		per.setNavn("X");
-		crud.updatePerson(per);
+		crud.updatePerson(per.getId(), "X");
 		per = crud.retrievePerson(1001);
 		System.out.println(per);
 		
-		per.setNavn("Per Viskeler");
-		crud.updatePerson(per);
+		crud.updatePerson(per.getId(), "Per Viskeler");
 		per = crud.retrievePerson(1001);
 		System.out.println(per);
 		System.out.println("---");
@@ -65,7 +63,7 @@ public class Main3CompleteCrud {
 
 		try {
 			tx.begin();
-			em.persist(p);
+			em.persist(p); //Oppretter en ny rad i databasen
 			tx.commit();
 		
 		} catch (Throwable e) {
@@ -120,18 +118,13 @@ public class Main3CompleteCrud {
 		return personer;
 	}
 	
-	public void updatePerson(Person p) {
+	public void updatePerson(int id, String nyttNavn) {
 
 		EntityManager em = emf.createEntityManager();
 
 		try {
-			em.getTransaction().begin();
-			Person q = em.merge(p);
-			
-			boolean x = p.getNavn().equals("X");
-			if (x) p.setNavn("Tull");	//Virker ikke siden p er detached
-			if (x) q.setNavn("Tull");	//Virker siden q er managed
-			em.getTransaction().commit();
+			Person p = em.find(Person.class, id);
+			p.setNavn(nyttNavn);
 		
 		} catch (Throwable e) {
 			e.printStackTrace();
@@ -147,7 +140,9 @@ public class Main3CompleteCrud {
 
 		try {
 			em.getTransaction().begin();
-			em.remove(em.merge(p));
+			
+			em.remove(em.find(Person.class, p.getId()));
+			
 			em.getTransaction().commit();
 		
 		} catch (Throwable e) {
