@@ -6,11 +6,12 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "person", schema = "hello_jpa")
+@Table(schema = "hello_jpa")
 @NamedQuery(name = "hentAllePersoner", query ="SELECT p FROM Person p")
 public class Person {
 	
-	@Id private Integer id;
+	@Id
+	private Integer id;
 	private String navn;
 	
 	public Person() {
