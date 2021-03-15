@@ -50,16 +50,32 @@ public class TodoDAO {
 		}
 	}
 
+	public Todo finnTodoMedTekst(String tekst) {
+		EntityManager em = emf.createEntityManager();
+		
+		try {
+			TypedQuery<Todo> query = em.createQuery(
+					"SELECT t FROM Todo t WHERE t.tekst = :tekst", Todo.class);
+			query.setParameter("tekst", tekst);
+			return query.getSingleResult(); //NB! Unntak hvis 0 eller flere.
+		
+		} finally {
+			em.close();
+		}
+	}
+	
 	/**
 	 * @param tekst
 	 * @return
 	 */
 	public List<Todo> finnTodosMedTekst(String tekst) {
-		
 		EntityManager em = emf.createEntityManager();
 		
 		try {
-			return null; //TODO
+			TypedQuery<Todo> query = em.createQuery(
+					"SELECT t FROM Todo t WHERE t.tekst = :tekst", Todo.class);
+			query.setParameter("tekst", tekst);
+			return query.getResultList(); 
 		
 		} finally {
 			em.close();
@@ -162,4 +178,5 @@ public class TodoDAO {
 			em.close();
 		}
 	}
+
 }

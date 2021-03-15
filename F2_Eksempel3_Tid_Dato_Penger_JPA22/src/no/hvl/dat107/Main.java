@@ -17,9 +17,9 @@ public class Main {
         
         TidOgPenger ny = new TidOgPenger(
                 new BigDecimal("199.50"),
-                LocalDate.of(2018, Month.APRIL, 1),
+                LocalDate.of(2021, Month.APRIL, 1),
                 LocalTime.of(14, 50),
-                LocalDateTime.of(2018, Month.AUGUST, 31, 23, 59));
+                LocalDateTime.of(2021, Month.AUGUST, 31, 23, 59));
         
         dao.lagreIDatabasen(ny);
         

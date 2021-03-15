@@ -19,8 +19,7 @@ public class VitnemalDAO {
         EntityManager em = emf.createEntityManager();
 
         try {
-        	//TODO
-        	return null;
+        	return em.find(Vitnemal.class, studNr);
 
         } finally {
             em.close();
