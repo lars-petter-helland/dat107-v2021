@@ -10,12 +10,12 @@ public class BelopSomBigDecimal {
         // OK      BigDecimal fireKronerOgTiOre = new BigDecimal("4.10");
         // OK      BigDecimal fireKronerOgTiOre = BigDecimal.valueOf(4.10);
 
-        BigDecimal fireKronerOgTiOre = new BigDecimal("4.10");
-        BigDecimal tiOre = new BigDecimal("0.10");
+        BigDecimal fireKronerOgTiOre = BigDecimal.valueOf(4.10);
+        BigDecimal tiOre = BigDecimal.valueOf(0.10);
 
         BigDecimal fireKroner = fireKronerOgTiOre.subtract(tiOre);
 
-        // Hva blir skrevet ut på skjermen?
+        // Hva blir skrevet ut pï¿½ skjermen?
         System.out.println(fireKronerOgTiOre);
         System.out.println(tiOre);
         System.out.println(fireKroner);

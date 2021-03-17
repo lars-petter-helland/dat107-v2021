@@ -12,6 +12,7 @@ public class BelopSomDouble {
         // Hva blir skrevet ut på skjermen?
         System.out.println(fireKronerOgTiOre);
         System.out.println(tiOre);
+        
         System.out.println(fireKroner);
     }
 

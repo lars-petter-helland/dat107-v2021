@@ -16,13 +16,13 @@ public class Main {
 		VitnemalDAO vitnemalDAO = new VitnemalDAO();
 
 		
-//		//a) Søke opp vitnemålet til en gitt student.
-//		Vitnemal vitnemal = vitnemalDAO.finnVitnemalForStudent(123456);
-//
-//		System.out.println("\n### Vitnemål for student 123456:");
-//		vitnemal.skrivUt();
-//		
-//		
+		//a) Søke opp vitnemålet til en gitt student.
+		Vitnemal vitnemal = vitnemalDAO.finnVitnemalForStudent(123456);
+
+		System.out.println("\n### Vitnemål for student 123456:");
+		vitnemal.skrivUt();
+		
+		
 //		//b.i)  Registrere en ny karakter for en gitt student. Karakter finnes ikke fra før.
 //		
 //		String emnekodeRegistrering = "DAT666";
