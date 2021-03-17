@@ -32,4 +32,14 @@ public class Todo {
     public String toString() {
         return tekst;
     }
+
+	public void setTekst(String tekst) {
+		this.tekst = tekst;
+	}
+
+	public void setListe(Todoliste liste) {
+		this.liste = liste;
+	}
+	
+	
 }

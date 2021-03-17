@@ -5,7 +5,7 @@
     http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
     version="2.2">
 	
-	<persistence-unit name="TodoPU" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="kjell" transaction-type="RESOURCE_LOCAL">
 		
 		<class>no.hvl.dat107.Todoliste</class>
         <class>no.hvl.dat107.Todo</class>
@@ -13,7 +13,7 @@
 		<properties>
 		    <!--  Generelle JPA properties -->
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/DAT107" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/dat107v21" />
 			<property name="javax.persistence.jdbc.user" value="postgres" />
 			<property name="javax.persistence.jdbc.password" value="postgres" />
 

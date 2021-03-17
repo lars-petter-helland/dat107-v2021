@@ -4,7 +4,9 @@ import java.time.LocalDate;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 public class VitnemalDAO {
 
@@ -31,8 +33,15 @@ public class VitnemalDAO {
         EntityManager em = emf.createEntityManager();
         
         try {
-        	//TODO
-        	return null;
+        	String queryString = "SELECT k FROM Karakter k "
+        			+ "WHERE k.emnekode = :emnekode AND k.vitnemal.studnr = :studnr";
+        	
+        	TypedQuery<Karakter> query = em.createQuery(queryString, Karakter.class);
+        	
+        	query.setParameter("emnekode", emnekode);
+        	query.setParameter("studnr", studNr);
+        	
+        	return query.getSingleResult();
         	
         } finally {
             em.close();
@@ -43,14 +52,46 @@ public class VitnemalDAO {
     		LocalDate eksDato, String bokstav) {
         
         EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
         
+        Karakter k;
         try {
-        	//TODO
-        	return null;
-
+        	tx.begin();
+        	
+        	k = finnKarakter(studNr, emnekode);
+        	
+        	if(k == null) {
+            	Vitnemal vitnemal = em.find(Vitnemal.class, studNr);
+               	k = new Karakter(emnekode, eksDato, bokstav, vitnemal);
+            	em.persist(k);
+               	
+        	} else {
+        		k.setEksDato(eksDato);
+        		k.setbokstav(bokstav);
+        		em.merge(k);
+        	}
+        	
+        	tx.commit();
         } finally {
             em.close();
         }
+        return k;
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

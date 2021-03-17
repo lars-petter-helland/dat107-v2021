@@ -17,39 +17,39 @@ public class Main {
         
         //------------------------------------------------------------------------
         
-//        System.out.println("\n\nLager en liste [Husarbeid], legger til 3 todos og lagrer ...");
-//        
-//        Todoliste husarbeid = new Todoliste("Husarbeid");
-//        
-//        husarbeid.leggTil(rydde);
-//        husarbeid.leggTil(vaskeOpp);
-//        husarbeid.leggTil(stovsuge);
-//        
-//        todolisteDAO.lagreListe(husarbeid);
-//        int listeId = husarbeid.getListeId();
-//       
-//        System.out.println("Etter lagreListe():");
-//        System.out.println(todolisteDAO.finnListe(listeId));
-//
+        System.out.println("\n\nLager en liste [Husarbeid], legger til 3 todos og lagrer ...");
+        
+        Todoliste husarbeid = new Todoliste("Husarbeid");
+        
+        husarbeid.leggTil(rydde);
+        husarbeid.leggTil(vaskeOpp);
+        husarbeid.leggTil(stovsuge);
+        
+        todolisteDAO.lagreListe(husarbeid);
+        int listeId = husarbeid.getListeId();
+       
+        System.out.println("Etter lagreListe():");
+        System.out.println(todolisteDAO.finnListe(listeId));
+
 //		pauseOgSjekkDatabasen("\nSjekk at vi har fått oppdatert databasen riktig.");
-//        
-//        //------------------------------------------------------------------------
-//        
-//        System.out.println("\n\nEndrer navn, fjerner [Vaske Opp], legger til [Vaske vinduer], "
-//        		+ "endrer støvsuging-tekst til \"Gøy støvsuging\" og oppdaterer ...");
-//
-//        husarbeid.setNavn("Gøy husarbeid");
-//        husarbeid.fjern(vaskeOpp);         
-//        husarbeid.leggTil(vaskeVinduer);   
-//        stovsuge.setTekst("Gøy støvsuging");
-//       
-//        todolisteDAO.oppdaterListe(husarbeid);
-//        
-//        System.out.println("Etter oppdaterListe():");
-//        System.out.println(todolisteDAO.finnListe(listeId));
-//        
-//		pauseOgSjekkDatabasen("\nSjekk at vi har fått oppdatert databasen riktig.");
-//        
+        
+        //------------------------------------------------------------------------
+        
+        System.out.println("\n\nEndrer navn, fjerner [Vaske Opp], legger til [Vaske vinduer], "
+        		+ "endrer støvsuging-tekst til \"Gøy støvsuging\" og oppdaterer ...");
+
+        husarbeid.setNavn("Gøy husarbeid");
+        husarbeid.fjern(vaskeOpp);         
+        husarbeid.leggTil(vaskeVinduer);   
+        stovsuge.setTekst("Gøy støvsuging");
+       
+        todolisteDAO.oppdaterListe(husarbeid);
+        
+        System.out.println("Etter oppdaterListe():");
+        System.out.println(todolisteDAO.finnListe(listeId));
+        
+		pauseOgSjekkDatabasen("\nSjekk at vi har fått oppdatert databasen riktig.");
+        
 //        //------------------------------------------------------------------------
 //        
 ////        System.out.println("\n\nSøker opp listen på navn ...");

@@ -14,7 +14,7 @@ public class TodolisteDAO {
     private EntityManagerFactory emf;
 
     public TodolisteDAO() {
-        emf = Persistence.createEntityManagerFactory("TodoPU");
+        emf = Persistence.createEntityManagerFactory("kjell");
     }
 
     public Todoliste finnListe(int listeNr) {
@@ -23,7 +23,7 @@ public class TodolisteDAO {
         Todoliste liste = null;
         try {
         	
-            //TODO
+            liste = em.find(Todoliste.class, listeNr);
             
         } finally {
             em.close();
@@ -37,7 +37,7 @@ public class TodolisteDAO {
         try {
             tx.begin();
             
-            //TODO
+            em.persist(liste);
             
             tx.commit();
         } catch (Throwable e) {
@@ -71,7 +71,7 @@ public class TodolisteDAO {
         try {
             tx.begin();
             
-            //TODO
+            em.merge(liste);
             
             tx.commit();
         } catch (Throwable e) {

@@ -15,11 +15,16 @@ public class Vitnemal {
 
 	@Id
 	private int studnr;
+	
 	private LocalDate studiestart;
 	private LocalDate studieslutt;
 	
 	@OneToMany(mappedBy = "vitnemal", fetch = FetchType.EAGER)
 	private List<Karakter> karakterer;
+	
+	public void leggTilKarakter(Karakter k) {
+		karakterer.add(k);
+	}
 	
 	@Override
 	public String toString() {
