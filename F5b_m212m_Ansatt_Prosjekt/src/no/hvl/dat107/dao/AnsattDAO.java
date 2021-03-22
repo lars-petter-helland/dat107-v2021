@@ -42,9 +42,10 @@ public class AnsattDAO {
             p = em.merge(p);
             
             Prosjektdeltagelse pd = new Prosjektdeltagelse(a, p, 0);
-            
-            a.leggTilProsjektdeltagelse(pd);
-            p.leggTilProsjektdeltagelse(pd);
+
+//Flyttet til konstruktør            
+//            a.leggTilProsjektdeltagelse(pd);
+//            p.leggTilProsjektdeltagelse(pd);
             
             em.persist(pd);
             
@@ -68,6 +69,7 @@ public class AnsattDAO {
             tx.begin();
             
             ProsjektdeltagelsePK pk = new ProsjektdeltagelsePK(a.getId(), p.getId());
+            
             Prosjektdeltagelse pd = em.find(Prosjektdeltagelse.class, pk);
             
             a = em.merge(a);

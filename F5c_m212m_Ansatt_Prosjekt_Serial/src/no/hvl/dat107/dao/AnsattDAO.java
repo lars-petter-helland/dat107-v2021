@@ -7,6 +7,7 @@ import javax.persistence.Persistence;
 
 import no.hvl.dat107.entity.Ansatt;
 import no.hvl.dat107.entity.Prosjekt;
+import no.hvl.dat107.entity.Prosjektdeltagelse;
 
 public class AnsattDAO {
 
@@ -37,7 +38,12 @@ public class AnsattDAO {
         try {
             tx.begin();
             
-            //TODO - Samme som i b)
+            Prosjektdeltagelse pd = new Prosjektdeltagelse(a, p, 0);
+            
+            em.merge(a).leggTilProsjektdeltagelse(pd);
+            em.merge(p).leggTilProsjektdeltagelse(pd);
+            
+            em.persist(pd);
             
             tx.commit();
         } catch (Throwable e) {
@@ -59,6 +65,12 @@ public class AnsattDAO {
             tx.begin();
 
             //TODO - Må søke med JPQL. Ellers som i b)
+            
+//            Prosjektdeltagelse pd = em.find(Prosjektdeltagelse.class, ???);
+//            
+//            //...
+//            
+//            em.remove(pd);
             
             tx.commit();
         } catch (Throwable e) {

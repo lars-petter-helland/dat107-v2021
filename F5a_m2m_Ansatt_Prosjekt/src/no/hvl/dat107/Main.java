@@ -27,7 +27,7 @@ public class Main {
         a2.skrivUtMedProsjekter();
         p3.skrivUtMedAnsatte();
         
-        ansattDAO.slettProsjektdeltagelse(a2, p3);
+        ansattDAO.slettProsjektdeltagelse(a2.getId(), p3.getId());
         a2 = ansattDAO.finnAnsattMedId(2);
         p3 = prosjektDAO.finnProsjektMedId(3);
         a2.skrivUtMedProsjekter();

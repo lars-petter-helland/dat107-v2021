@@ -30,6 +30,9 @@ public class Prosjektdeltagelse {
         this.ansatt = ansatt;
         this.prosjekt = prosjekt;
         this.timer = timer;
+        
+        ansatt.leggTilProsjektdeltagelse(this);
+        prosjekt.leggTilProsjektdeltagelse(this);
     }
     
     public void skrivUt(String innrykk) {

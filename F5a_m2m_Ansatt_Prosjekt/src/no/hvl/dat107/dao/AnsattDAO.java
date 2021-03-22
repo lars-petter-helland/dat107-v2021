@@ -29,7 +29,30 @@ public class AnsattDAO {
         return ansatt;
     }
 
-// ??    public void registrerProsjektdeltagelse(int ansattId, int prosjektId) {
+    public void registrerProsjektdeltagelse(int ansattId, int prosjektId) {
+    	
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        try {
+            tx.begin();
+            
+            Ansatt a = em.find(Ansatt.class, ansattId);
+            Prosjekt p = em.find(Prosjekt.class, prosjektId);
+            
+            a.leggTilProsjekt(p);
+            p.leggTilAnsatt(a);
+            
+            tx.commit();
+        } catch (Throwable e) {
+            e.printStackTrace();
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+        } finally {
+            em.close();
+        }
+    }
+    
     public void registrerProsjektdeltagelse(Ansatt a, Prosjekt p) {
     	
         EntityManager em = emf.createEntityManager();
@@ -37,7 +60,15 @@ public class AnsattDAO {
         try {
             tx.begin();
             
-            //TODO
+            a = em.find(Ansatt.class, a.getId());
+            p = em.find(Prosjekt.class, p.getId());
+
+// Alternativt:            
+//            a = em.merge(a);
+//            p = em.merge(p);
+            
+            a.leggTilProsjekt(p);
+            p.leggTilAnsatt(a);
             
             tx.commit();
         } catch (Throwable e) {
@@ -51,15 +82,18 @@ public class AnsattDAO {
         
     }
 
- // ??    public void slettProsjektdeltagelse(int ansattId, int prosjektId) {
-    public void slettProsjektdeltagelse(Ansatt a, Prosjekt p) {
+    public void slettProsjektdeltagelse(int ansattId, int prosjektId) {
     	
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
         try {
             tx.begin();
 
-            //TODO
+            Ansatt a = em.find(Ansatt.class, ansattId);
+            Prosjekt p = em.find(Prosjekt.class, prosjektId);
+            
+            a.fjernProsjekt(p);
+            p.fjernAnsatt(a);
             
             tx.commit();
         } catch (Throwable e) {
@@ -72,3 +106,12 @@ public class AnsattDAO {
         }
     }
 }
+
+
+
+
+
+
+
+
+

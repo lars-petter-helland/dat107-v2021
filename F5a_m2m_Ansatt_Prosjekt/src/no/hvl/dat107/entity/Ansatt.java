@@ -23,7 +23,11 @@ public class Ansatt {
     @ManyToMany(mappedBy="ansatte")
     private List<Prosjekt> prosjekter;
     
-    public void skrivUt(String innrykk) {
+    public int getId() {
+		return id;
+	}
+    
+	public void skrivUt(String innrykk) {
         System.out.printf("%sAnsatt nr %d: %s %s", innrykk, id, fornavn, etternavn);
     }
     
