@@ -1,0 +1,28 @@
+package no.hvl.dat107.entity;
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(schema = "forelesning6b")
+@DiscriminatorValue(value = "A")
+public class Ansatt extends Person { 
+
+    private String stilling;
+
+    public Ansatt() {}
+    
+    public Ansatt(String fNr, String fornavn, String etternavn, String stilling) {
+        super(fNr, fornavn, etternavn);
+        this.stilling = stilling;
+    }
+    
+    @Override
+    public String toString() {
+        return super.toString() + ", stilling=" + stilling;
+    }
+
+
+}
+
